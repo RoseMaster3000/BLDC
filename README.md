@@ -1,5 +1,16 @@
+# Setup
+1. Install Matlab (see section below)
+2. Create Virtual Environment `python3.9 -m venv virt` (version is important for PySide)
+3. Enter Virtual Environment `source virt/bin/activate` or `"virt/Scripts/activate.bat"`
+4. Install Dependencies (PySide, PyMoo, etc) `pip install -r requirements.txt`
+
+
+# GUI Usage
+Once in the virtual environment, simply run `python run.py`.
+
+
 # Matlab Download
 * [Official Download](https://www.mathworks.com/help/install/ug/install-products-with-internet-connection.html)
 * [Linux Installer](https://github.com/marshki/matlab_installer)
 * [Arch Installer](https://github.com/Rubo3/matlab-aur)
-* [Windows Torrent](magnet:?xt=urn:btih:E1AFB7C6D41C25E85D78A9CECDECD327310C283D&dn=MathWorks+MATLAB+R2023b+v23.2.0.2409890+%28x64%29+%2B+Crack+-+%5BhaxNode%5D&tr=http%3A%2F%2Fp4p.arenabg.com%3A1337%2Fannounce&tr=udp%3A%2F%2F47.ip-51-68-199.eu%3A6969%2Fannounce&tr=udp%3A%2F%2F9.rarbg.me%3A2780%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2710%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2730%2Fannounce&tr=udp%3A%2F%2F9.rarbg.to%3A2920%2Fannounce&tr=udp%3A%2F%2Fopen.stealth.si%3A80%2Fannounce&tr=udp%3A%2F%2Fopentracker.i2p.rocks%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.coppersurfer.tk%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.cyberia.is%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.dler.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.internetwarriors.net%3A1337%2Fannounce&tr=udp%3A%2F%2Ftracker.leechers-paradise.org%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.openbittorrent.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.opentrackr.org%3A1337&tr=udp%3A%2F%2Ftracker.pirateparty.gr%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.tiny-vps.com%3A6969%2Fannounce&tr=udp%3A%2F%2Ftracker.torrent.eu.org%3A451%2Fannounce)
+* [Windows Torrent](https://tinyurl.com/ynhcdh7r)

@@ -30,157 +30,122 @@ from pymoo.termination import get_termination
 from pymoo.core.callback import Callback
 import numpy as np
 
-# https://pymoo.org/interface/callback.html?highlight=callback
-class ProgressCallback(QObject, Callback): # Inherit from QObject FIRST
-    progress_updated = Signal(int) # Signal to emit progress percentage
-
-    def __init__(self, total_gens: int) -> None:
-        # Need explicit calls to both parent constructors
-        QObject.__init__(self)
-        Callback.__init__(self)
-        self.data["best_f"] = []
-        # Store total generations to calculate percentage
-        self.total_gens = max(1, total_gens) # Avoid division by zero
-
-    # The notify method is called after each generation
-    @Slot(object) # Decorate if necessary, though usually not required for internal calls
-    def notify(self, algorithm, **kwargs):
-        # Access algorithm properties
-        current_gen = algorithm.n_gen
-        pop_size = algorithm.pop_size
-
-        # Calculate progress
-        progress_percent = int((current_gen / self.total_gens) * 100)
-        # Emit the signal
-        self.progress_updated.emit(progress_percent)
-
-        # Keep your existing logic if needed
-        if algorithm.opt is not None and len(algorithm.opt) > 0:
-             # Check if opt is populated and has elements
-            best_solution_so_far = algorithm.opt.get("F")[0] # Get the best objective value
-            self.data["best_f"].append(best_solution_so_far)
-            print(f"Generation: {current_gen}/{self.total_gens}, Pop Size: {pop_size}, Best Objective: {best_solution_so_far:.4f}, Progress: {progress_percent}%")
-        else:
-            # Handle cases where optimization hasn't found a feasible solution yet or it's the very start
-             print(f"Generation: {current_gen}/{self.total_gens}, Pop Size: {pop_size}, Progress: {progress_percent}% (No feasible solution yet)")
-
-
 # Setup the optimizer
-def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, eng, Real, Integer, Choice, Binary, OptimizationConf, callback_instance): # Added callback_instance
-    """
-    This script sets up and runs the GA Optimizer
+def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, eng, Real, Integer, Choice, Binary, OptimizationConf):
 
-    Inputs:
-        MotorCalcs: Function for motor performance calculations.
-        params: Dictionary of model parameters.
-        OptimizationConf: Dictionary with optimization settings.
-        callback_instance: An instance of ProgressCallback (or similar QObject with progress signal).
-        ... other inputs ...
 
-    Outputs:
-        res: Optimization results
-    """
-    # --- Extract parameters from OptimizationConf ---
+
     MinEff_ = OptimizationConf.get("MinEff_")
     MaxWeight_kg = OptimizationConf.get("MaxWeight")
     VDC = OptimizationConf.get("VDC")
     MinTor_Nm_str = OptimizationConf.get("MinTor")
     SpeedReq_rpm_str = OptimizationConf.get("SpeedReq")
-    npop = OptimizationConf.get("npop")
-    ngens = OptimizationConf.get("ngens")
-    nprocesses = OptimizationConf.get("nprocesses")
-    DisMut = OptimizationConf.get("DisMut")
-    ProbMut = OptimizationConf.get("ProbMut")
-
-    # --- Process input strings ---
+    
     Tor_numbers = MinTor_Nm_str.split(',')
-    MinTor_Nm = np.array([float(num) for num in Tor_numbers])
+    MinTor_Nm = [float(num) for num in Tor_numbers]
     Speed_numbers = SpeedReq_rpm_str.split(',')
-    SpeedReq_rpm = np.array([float(num) for num in Speed_numbers])
+    SpeedReq_rpm = [float(num) for num in Speed_numbers]    
+    
+    MinTor_Nm = np.array(MinTor_Nm)
+    SpeedReq_rpm = np.array(SpeedReq_rpm)
+    
     NumPts = len(SpeedReq_rpm)
-
-    # --- Calculate number of constraints and objectives ---
-    NumInEqConst_ = NumPts + 5
-    NumEqConst_ = 0
-    NumObj_ = 0
-    if OptimizationConf.get("TorqueOpt"): NumObj_ += NumPts
-    if OptimizationConf.get("EfficinecyOpt_min"): NumObj_ += 1
-    if OptimizationConf.get("EfficinecyOpt_max"): NumObj_ += 1
-    if OptimizationConf.get("WeightOpt"): NumObj_ += 1
-    if OptimizationConf.get("MagWeightOpt"): NumObj_ += 1
-    if OptimizationConf.get("VoltageOpt"): NumObj_ += 1
-    if OptimizationConf.get("MtrLengthOpt"): NumObj_ += 1
-    if OptimizationConf.get("MtrRadiusOpt"): NumObj_ += 1
-    print(f"Number of Operating Points: {NumPts}")
-    print(f"Number of Objectives: {NumObj_}")
-
-    # --- Define the Pymoo Problem ---
+    
+    NumInEqConst_ = NumPts +5    # number of inequality constraints
+    NumEqConst_ = 0       # number of equality constraints   
+    NumObj_ = 0           # number of objectives
+    if OptimizationConf.get("TorqueOpt") == True: 
+        NumObj_ = NumObj_+NumPts
+    if OptimizationConf.get("EfficinecyOpt_min") == True: 
+        NumObj_ = NumObj_+1
+    if OptimizationConf.get("EfficinecyOpt_max") == True: 
+        NumObj_ = NumObj_+1
+    if OptimizationConf.get("WeightOpt") == True: 
+        NumObj_ = NumObj_+1
+    if OptimizationConf.get("MagWeightOpt") == True: 
+        NumObj_ = NumObj_+1
+    if OptimizationConf.get("VoltageOpt") == True: 
+        NumObj_ = NumObj_+1
+    if OptimizationConf.get("MtrLengthOpt") == True: 
+        NumObj_ = NumObj_+1
+    if OptimizationConf.get("MtrRadiusOpt") == True: 
+        NumObj_ = NumObj_+1
+    print(NumPts)
+    print(NumObj_)
     class Optimizer(ElementwiseProblem):
+    
         def __init__(self, params, NumObj_, NumEqConst_, NumInEqConst_, OptimizationConf, verbose=False, **kwargs):
             self.verbose = verbose
+            
+            # break `params` into `vars` and `consts`
+            #############################
             self.vars = dict()
             self.consts = dict()
             for key, value in params.items():
-                # Check if value is a Pymoo variable type (needs Real, Integer etc. defined)
-                # Assuming Real, Integer, Choice, Binary are types/classes from Pymoo
-                # Make sure these types are correctly passed or imported
-                if isinstance(value, (Real, Integer, Binary, Choice)):
+                if type(value) in [Real, Integer, Binary, Choice]:
                     self.vars[key]=value
                 else:
                     self.consts[key]=value
-
+            # print(self.vars) 
+            # print(self.vars.keys()) 
+            # print(self.vars.values()) 
+            # print(self.consts)
+            
+            # initialize the problem by defining the number of onjectives and the number of constraints
+            #############################        
             super().__init__(vars=self.vars,
                              n_obj=NumObj_,
                              n_ieq_constr=NumInEqConst_,
                              n_eq_constr=NumEqConst_,
                              **kwargs)
-
+    
+        # call the `_evaluate` function to calculate the objectives and contraints
+        #############################
         def _evaluate(self, x, out, *args, **kwargs):
-            # Ensure all necessary arguments are passed to MotorCalcs
-            # Note: OptimizationConf is passed twice in the original code, check if intentional
-             out["F"], out["G"] = MotorCalcs(x, self.consts, MinEff_, MinTor_Nm, MaxWeight_kg, VDC, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, SpeedReq_rpm, eng, OptimizationConf, NumObj_)
 
-
-    # --- Setup Algorithm ---
-    mutation = PolynomialMutation(prob=ProbMut, eta=DisMut)
+            out["F"], out["G"] = MotorCalcs(x, OptimizationConf, MinEff_, MinTor_Nm, MaxWeight_kg, VDC, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, SpeedReq_rpm, eng,OptimizationConf,NumObj_)
+    npop = OptimizationConf.get("npop")
+    ngens = OptimizationConf.get("ngens")
+    nprocesses = OptimizationConf.get("nprocesses")
+    DisMut = OptimizationConf.get("DisMut")
+    ProbMut = OptimizationConf.get("ProbMut")
+            
+    # Set up the mutation operator
+    # ProbMut = 0.1 means 10% chance that a gene will be mutated. higher number =  higher exploration
+    # DisMut Low eta (e.g., < 1): Increases the likelihood of larger mutations, which can help in exploring the solution space more broadly.
+    # DisMut Moderate eta (e.g., 1 to 20): Balances exploration and exploitation, making it suitable for many optimization tasks.
+    # DisMut High eta (e.g., > 20): Results in smaller mutations, refining the solutions and focusing on local search. This can be useful in the later stages of optimization when you want to fine-tune solutions.
+    
+    mutation = PolynomialMutation(prob=ProbMut, eta=DisMut)    
+    
     algorithm = MixedVariableGA(
-        pop_size=npop,
+        pop_size=npop, 
         survival=RankAndCrowding(crowding_func="cd"),
         mutation=mutation
-        # Add sampling and crossover if needed for mixed variables
-        # sampling=MixedVariableSampling(),
-        # crossover=MixedVariableCrossover()
     )
-
-    # --- Setup Termination ---
+    
     termination = DefaultMultiObjectiveTermination(
         xtol=1e-3,
         cvtol=1e-3,
         ftol=1e-3,
         n_max_gen=ngens,
-        n_max_evals=50000 # Consider if this should also be configurable
+        n_max_evals=50000
     )
-
-    # --- Create Problem Instance ---
-    problem = Optimizer(params, NumObj_, NumEqConst_, NumInEqConst_, OptimizationConf)
-
-    # --- Run Optimizer ---
-    # Pass the provided callback_instance here
-    print("Starting optimization...")
-    res = minimize(problem,
-                   algorithm,
-                   termination,
-                   # n_processes=nprocesses, # Careful with multiprocessing and Qt Signals
-                   seed=1, # Good practice for reproducibility
-                   verbose=True,
-                   save_history=False, # Set to True if history is needed later
-                   callback=callback_instance # Use the passed instance
+    
+    problem = Optimizer(params,NumObj_,NumEqConst_,NumInEqConst_,OptimizationConf)
+    
+    # Run optimizer (objective function minimizer)
+    res = minimize(
+        problem,
+        algorithm,
+        termination,
+        n_processes=nprocesses,
+        verbose=True,
+        save_history=False,
     )
-
-    # --- Check for results ---
+    
+    # check if there is no feasible solution
     if res.F is None:
-        print("Optimization finished: No feasible solution found. Consider relaxing constraints.")
-    else:
-        print("Optimization finished successfully.")
-
+        print("There is no solution. Consider relaxing the constraints")
+        
     return res
