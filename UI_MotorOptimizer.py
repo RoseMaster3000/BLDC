@@ -70,8 +70,11 @@ def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminatio
         NumObj_ = NumObj_+1
     if OptimizationConf.get("MtrRadiusOpt") == True: 
         NumObj_ = NumObj_+1
-    print(NumPts)
-    print(NumObj_)
+    print(f"Number of Speed Points (NumPts): {NumPts}")
+    print(f"Calculated Number of Objectives (NumObj_): {NumObj_}")
+    if NumObj_ <= 0:
+        raise ValueError("Optimization requires at least one objective function to be selected in OptimizationConf. NumObj_ is currently 0.")
+
     class Optimizer(ElementwiseProblem):
     
         def __init__(self, params, NumObj_, NumEqConst_, NumInEqConst_, OptimizationConf, verbose=False, **kwargs):
@@ -141,11 +144,11 @@ def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminatio
         termination,
         n_processes=nprocesses,
         verbose=True,
-        save_history=False,
+        save_history=False
     )
     
     # check if there is no feasible solution
     if res.F is None:
         print("There is no solution. Consider relaxing the constraints")
-        
+    
     return res
