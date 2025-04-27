@@ -27,14 +27,13 @@ from pymoo.operators.survival.rank_and_crowding import RankAndCrowding
 from pymoo.operators.mutation.pm import PolynomialMutation
 from pymoo.termination import get_termination
 # from pymoo.termination import MultiObjectiveTermination
-from pymoo.core.callback import Callback
 import numpy as np
 
-# Setup the optimizer
-def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, eng, Real, Integer, Choice, Binary, OptimizationConf):
 
 
-
+# Setup the optimizer 
+# No accepts optional "callback_instance" (for progress bar)
+def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, eng, Real, Integer, Choice, Binary, OptimizationConf, callback_instance=None):
     MinEff_ = OptimizationConf.get("MinEff_")
     MaxWeight_kg = OptimizationConf.get("MaxWeight")
     VDC = OptimizationConf.get("VDC")
@@ -144,7 +143,8 @@ def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminatio
         termination,
         n_processes=nprocesses,
         verbose=True,
-        save_history=False
+        save_history=False,
+        callback=callback_instance
     )
     
     # check if there is no feasible solution

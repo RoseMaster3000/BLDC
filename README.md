@@ -6,7 +6,8 @@
 (I have Matlab 23.2.1, so I install that engine in my requirements.txt file)
 
 # GUI Usage
-Once in the virtual environment, simply run `python run.py`.
+1. Enter Virtual Environment `source virt/bin/activate` or `"virt/Scripts/activate.bat"`
+2. Run GUI `python run.py`.
 
 # Matlab Download
 * [Official Download](https://www.mathworks.com/help/install/ug/install-products-with-internet-connection.html)
