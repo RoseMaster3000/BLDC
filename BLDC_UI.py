@@ -18,10 +18,10 @@ class Ui_MainWindow(object):
         if not MainWindow.objectName():
             MainWindow.setObjectName(u"MainWindow")
         MainWindow.resize(1145, 666)
-        self.actionLoad = QAction(MainWindow)
-        self.actionLoad.setObjectName(u"actionLoad")
         self.actionSave = QAction(MainWindow)
         self.actionSave.setObjectName(u"actionSave")
+        self.actionLoad = QAction(MainWindow)
+        self.actionLoad.setObjectName(u"actionLoad")
         self.centralwidget = QWidget(MainWindow)
         self.centralwidget.setObjectName(u"centralwidget")
         self.tabWidget = QTabWidget(self.centralwidget)

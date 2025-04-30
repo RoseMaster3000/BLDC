@@ -1,17 +1,21 @@
+# Python Modules
 import sys
+import json      # For saving/loading UI values from file
 import traceback # For detailed error reporting
-from PySide2.QtWidgets import QApplication, QMainWindow, QMessageBox
-from PySide2.QtCore import QObject, Signal, Slot, QThread # Qt threading and signals/slots
-
-# Import your generated UI class and other necessary components
-from BLDC_UI import Ui_MainWindow
-from pint import UnitRegistry
-from pymoo.core.variable import Real, Integer, Choice, Binary
-from pymoo.core.callback import Callback # Import Callback base class
-from UI_MotorOptimizer import MotorOpt # Your optimization function
-from UI_MotorModel import MotorCalcs_Vectorized # Your calculation function
+from pint import UnitRegistry # For unit conversion
 import matlab.engine
 
+# User Interface Libraries / Pymoo
+from PySide2.QtWidgets import QApplication, QMainWindow, QMessageBox, QFileDialog, QSpinBox
+from PySide2.QtWidgets import QDoubleSpinBox, QComboBox, QLineEdit, QCheckBox, QWidget
+from PySide2.QtCore import QObject, Signal, Slot, QThread, Qt
+from pymoo.core.variable import Real, Integer, Choice, Binary
+from pymoo.core.callback import Callback
+
+# Project Imports
+from UI_MotorOptimizer import MotorOpt 
+from UI_MotorModel import MotorCalcs_Vectorized
+from BLDC_UI import Ui_MainWindow
 
 # PyMoo progress bar callback (emit signals to QT worker)
 class ProgressCallback(Callback):
@@ -28,7 +32,7 @@ class ProgressCallback(Callback):
             self.progress_signal.emit(current_gen)
 
 
-# QT worker (threaded signal reveicver -> updates progress bar)
+# QT worker (threaded signal receiver -> updates progress bar)
 class OptimizationWorker(QObject):
     progress_signal = Signal(int)
     finished_signal = Signal(object)
@@ -70,16 +74,18 @@ class OptimizationWorker(QObject):
 # QT User Interface
 class MainWindow(QMainWindow):
     def __init__(self):
+        # --- Initialize GUI ---
         super(MainWindow, self).__init__()
         self.ui = Ui_MainWindow()
         self.ui.setupUi(self)
 
-        # --- Attributes for Threading ---
+        # --- Intitialize Worker (dedicated thread for progress bar) ---
         self.optimization_thread = None
         self.optimization_worker = None
 
-        # --- Other Setup ---
-        self.ureg = UnitRegistry() # Keep Pint if used elsewhere
+        # --- Initialize Pint (unit conversion module) ---
+        self.ureg = UnitRegistry()
+
         # Start MATLAB engine once
         try:
              print("Starting MATLAB engine...")
@@ -94,7 +100,6 @@ class MainWindow(QMainWindow):
         # --- Connect UI Signals ---
         # Connect the Execution button to the NEW slot that handles threading
         self.ui.Execution.clicked.connect(self.start_optimization)
-        # Connect material dropdowns to update derived values immediately (optional but good practice)
         self.ui.Magnet_Material.currentIndexChanged.connect(self.update_magnet_br)
         self.ui.Iron_Material.currentIndexChanged.connect(self.update_max_b_magnet_iron)
         self.ui.Lamination_Material.currentIndexChanged.connect(self.update_present_b_lamination)
@@ -107,6 +112,143 @@ class MainWindow(QMainWindow):
         self.update_max_b_magnet_iron()
         self.update_present_b_lamination()
 
+
+    # --- Save/Load UI State ---
+    @Slot()
+    def on_actionSave_triggered(self):
+        """Saves the current values of all relevant UI fields to a JSON file."""
+        print("Save action triggered!")
+        options = QFileDialog.Options()
+        # Suggest JSON file type
+        fileName, _ = QFileDialog.getSaveFileName(self, "Save UI State", "", 
+                                                  "JSON Files (*.json);;All Files (*)", options=options)
+        
+        if not fileName:
+            print("Save cancelled.")
+            return
+
+        # Ensure the filename ends with .json
+        if not fileName.lower().endswith('.json'):
+            fileName += '.json'
+        
+        print(f"Attempting to save UI state to: {fileName}")
+
+        ui_state = {}
+        try:
+            # Find all relevant input widgets within the central widget (or main window)
+            # Adjust the list of types if you have other input widgets
+            all_widgets = self.findChildren(QWidget) 
+            widgets_to_save = [w for w in all_widgets if isinstance(w, (QSpinBox, QDoubleSpinBox, QComboBox, QLineEdit, QCheckBox))]
+
+            for widget in widgets_to_save:
+                object_name = widget.objectName()
+                if not object_name: # Skip widgets without an object name
+                    print(f"Warning: Skipping widget of type {type(widget)} because it has no object name.")
+                    continue
+
+                value = None
+                if isinstance(widget, (QSpinBox, QDoubleSpinBox)):
+                    value = widget.value()
+                elif isinstance(widget, QComboBox):
+                    value = widget.currentText() # Save the selected text
+                elif isinstance(widget, QLineEdit):
+                    value = widget.text()
+                elif isinstance(widget, QCheckBox):
+                    value = widget.isChecked()
+                
+                if value is not None:
+                    # print(f"Saving: {object_name} = {value}")
+                    ui_state[object_name] = value
+                else:
+                    print(f"Warning: Could not determine value for widget {object_name} of type {type(widget)}")
+            
+            # Also save the current tab index
+            ui_state['__current_tab_index__'] = self.ui.tabWidget.currentIndex()
+
+            # Write the dictionary to the JSON file
+            with open(fileName, 'w') as f:
+                json.dump(ui_state, f, indent=4)
+
+            print(f"UI state successfully saved to {fileName}")
+            QMessageBox.information(self, "Save Successful", f"UI state saved to:\n{fileName}")
+
+        except Exception as e:
+            print(f"Error saving UI state: {e}")
+            detailed_error = traceback.format_exc()
+            QMessageBox.critical(self, "Save Error", f"Could not save UI state:\n{e}\n\nDetails:\n{detailed_error}")
+
+
+    @Slot()
+    def on_actionLoad_triggered(self):
+        """Loads UI state from a selected JSON file."""
+        print("Load action triggered!")
+        options = QFileDialog.Options()
+        fileName, _ = QFileDialog.getOpenFileName(self, "Load UI State", "", 
+                                                  "JSON Files (*.json);;All Files (*)", options=options)
+        if not fileName:
+            print("Load cancelled.")
+            return
+        print(f"Attempting to load UI state from: {fileName}")
+        try:
+            # Read the state from the JSON file
+            with open(fileName, 'r') as f:
+                ui_state = json.load(f)
+
+            # Apply the loaded state to the UI widgets
+            for object_name, value in ui_state.items():
+                
+                # Handle special keys like the saved tab index
+                if object_name == '__current_tab_index__':
+                    if isinstance(value, int) and 0 <= value < self.ui.tabWidget.count():
+                         self.ui.tabWidget.setCurrentIndex(value)
+                    continue # Move to the next item
+
+                # Find the widget by its object name
+                # Important: Search within the 'ui' object if widgets are attributes of it
+                # Or search within the main window ('self') if they are direct children
+                widget = self.findChild(QObject, object_name) 
+
+                if widget:
+                    # print(f"Loading: {object_name} = {value} into {type(widget)}")
+                    # Set the value based on the widget type
+                    if isinstance(widget, (QSpinBox, QDoubleSpinBox)):
+                        # Ensure value type compatibility (JSON loads numbers as float or int)
+                        try:
+                            widget.setValue(float(value) if isinstance(widget, QDoubleSpinBox) else int(value))
+                        except (TypeError, ValueError) as type_err:
+                             print(f"Warning: Type mismatch for {object_name}. Expected number, got {type(value)}. Error: {type_err}")
+                    elif isinstance(widget, QComboBox):
+                        # Find the index of the text and set it
+                        index = widget.findText(str(value)) 
+                        if index != -1:
+                            widget.setCurrentIndex(index)
+                        else:
+                            print(f"Warning: Could not find text '{value}' in ComboBox '{object_name}'.")
+                    elif isinstance(widget, QLineEdit):
+                        widget.setText(str(value))
+                    elif isinstance(widget, QCheckBox):
+                        # Ensure value is boolean
+                        widget.setChecked(bool(value))
+                    else:
+                        print(f"Widget {object_name} found, but its type ({type(widget)}) is not handled for loading.")
+                else:
+                    print(f"Warning: Widget with object name '{object_name}' not found in the UI.")
+
+            print(f"UI state successfully loaded from {fileName}")
+            QMessageBox.information(self, "Load Successful", f"UI state loaded from:\n{fileName}")
+
+        except FileNotFoundError:
+            print(f"Error: File not found - {fileName}")
+            QMessageBox.critical(self, "Load Error", f"File not found:\n{fileName}")
+        except json.JSONDecodeError as e:
+            print(f"Error: Invalid JSON file - {fileName}. Error: {e}")
+            QMessageBox.critical(self, "Load Error", f"Could not parse JSON file:\n{fileName}\n\nError: {e}")
+        except Exception as e:
+            print(f"Error loading UI state: {e}")
+            detailed_error = traceback.format_exc()
+            QMessageBox.critical(self, "Load Error", f"An unexpected error occurred while loading UI state:\n{e}\n\nDetails:\n{detailed_error}")
+
+        
 
     @Slot()
     def start_optimization(self):
@@ -201,51 +343,109 @@ class MainWindow(QMainWindow):
 
     # --- Helper Methods to Read UI ---
     def _create_pymoo_parameters_from_ui(self):
-        """Reads Tab 1, creates pymoo variables, returns params dict."""
+        """
+        Reads Tab 1, CONVERTS UNITS for relevant Real variables to SI, 
+        creates pymoo variables, and returns params dict.
+        """
         parameters = {}
-        # List of variable base names expected in the UI (Tab 1)
-        # Assumes UI elements are named like 'VarName_1', 'VarName_2', etc.
-        var_base_names = [
-            'I_PolePair', 'R_MagnetRadialLength', 'R_MagnetOutR', 'R_MagnetBackIronInnerR',
-            'R_MagneticLossCoef1', 'R_MagneticLossCoef2', 'R_MagneticLossCoef3',
-            'I_NumElecPhase', 'R_PhaseCurrentAmp', 'R_WireCopperR', 'R_InsulThick',
-            'R_FillFactor', 'R_LaminatToothWedgeThickness', 'R_LaminatR',
-            'R_LamSlotLinerThick', 'R_LoadInertia', 'R_GearRatio', 'R_MtrLength',
-            'R_FluidSpecificGrav', 'R_FluidKinVisc', 'R_AirgapRadialLength',
-            'R_VacMagneticPerm'
-        ]
+        
+        # Maps UI text to Pint-compatible unit strings
+        ui_to_pint_map = {
+            "Meter": "meter", "Millimeter": "mm", "Inch": "inch",
+            "Apk": "ampere", 
+            "kg.m/s^2": "kg * meter**2",  # Correcting for Moment of Inertia
+            "oz.in/s^2": "oz * inch**2",  # Correcting for Moment of Inertia
+            "rpm": "rpm", "rad/s": "rad/s", "Hz": "Hz", # For speed (if needed elsewhere)
+            "Nm": "N*m", "in.lb": "inch*lbf", "ft.lb": "foot*lbf", # For torque (if needed elsewhere)
+            "cSt": "cSt", # Centistokes
+            "H/m": "H/m", # Henry per meter
+        }
+        
+        # Maps base variable names to their expected SI unit for the optimizer
+        base_name_to_si_unit = {
+            'R_MagnetRadialLength': 'meter',
+            'R_MagnetOutR': 'meter',
+            'R_MagnetBackIronInnerR': 'meter',
+            'R_PhaseCurrentAmp': 'ampere', # Already SI
+            'R_WireCopperR': 'meter',
+            'R_InsulThick': 'meter',
+            'R_LaminatToothWedgeThickness': 'meter',
+            'R_LaminatR': 'meter',
+            'R_LamSlotLinerThick': 'meter',
+            'R_LoadInertia': 'kg * meter**2', # Moment of Inertia SI unit
+            'R_MtrLength': 'meter',
+            'R_AirgapRadialLength': 'meter',
+            'R_FluidKinVisc': 'meter**2 / second', # Kinematic viscosity SI unit
+            'R_VacMagneticPerm': 'H/m', # Already SI
+             # Variables without units (or handled differently) don't need mapping here
+            'R_MagneticLossCoef1': '', 'R_MagneticLossCoef2': '', 'R_MagneticLossCoef3': '',
+            'R_FillFactor': '', 'R_GearRatio': '', 'R_FluidSpecificGrav': '',
+        }
+        # --- End Unit Mapping ---
+
+        var_base_names = list(base_name_to_si_unit.keys()) # Get names from map keys
+        # Add Integer variables manually
+        var_base_names.extend(['I_PolePair', 'I_NumElecPhase']) 
 
         for base_name in var_base_names:
             try:
                 widget1 = getattr(self.ui, base_name + '_1')
-                widget2 = getattr(self.ui, base_name + '_2', None) # _2 might not exist for fixed values
+                widget2 = getattr(self.ui, base_name + '_2', None) 
+                unit_widget = getattr(self.ui, base_name + '_unit', None)
 
                 val1 = widget1.value()
-                bounds = (val1, widget2.value() if widget2 else val1) # Use val1 if widget2 doesn't exist
+                # Determine bounds: use widget2 if exists, else val1
+                val2 = widget2.value() if widget2 else val1
 
-                # Create Pymoo variable based on type prefix (I_ for Integer, R_ for Real)
+                # Handle Integer types first (no unit conversion needed here)
                 if base_name.startswith('I_'):
-                    # Ensure bounds are integers for Integer type
-                    int_bounds = (int(bounds[0]), int(bounds[1]))
+                    int_bounds = (int(val1), int(val2))
+                    if int_bounds[0] > int_bounds[1]:
+                         raise ValueError(f"Lower bound ({int_bounds[0]}) > Upper bound ({int_bounds[1]})")
                     parameters[base_name] = Integer(bounds=int_bounds)
+                    continue # Move to next base_name
+
+                # Handle Real types (check for unit conversion)
                 elif base_name.startswith('R_'):
-                     # Ensure bounds are floats for Real type
-                     float_bounds = (float(bounds[0]), float(bounds[1]))
-                     parameters[base_name] = Real(bounds=float_bounds)
-                else:
-                     # Handle other types or fixed values if needed (e.g., Choice, Binary)
-                     # For now, assume fixed values are handled elsewhere or passed directly
-                     pass
-            except AttributeError:
-                 print(f"Warning: UI elements for '{base_name}' not found or incomplete. Skipping.")
+                    target_si_unit = base_name_to_si_unit.get(base_name)
+                    
+                    # Perform unit conversion IF a unit widget exists AND a target SI unit is defined
+                    if unit_widget and target_si_unit:
+                        selected_unit_text = unit_widget.currentText()
+                        pint_unit_str = ui_to_pint_map.get(selected_unit_text)
+                        
+                        if not pint_unit_str:
+                            raise ValueError(f"Unit '{selected_unit_text}' selected for '{base_name}' is not defined in ui_to_pint_map.")
+                        
+                        # Use Pint for conversion
+                        pint_unit = self.ureg(pint_unit_str)
+                        val1_si = (val1 * pint_unit).to(target_si_unit).magnitude
+                        # Convert val2 only if widget2 exists, otherwise use val1_si
+                        val2_si = (val2 * pint_unit).to(target_si_unit).magnitude if widget2 else val1_si
+                        
+                        # Create Pymoo Real variable with SI bounds
+                        float_bounds_si = (float(val1_si), float(val2_si))
+
+                    # No unit conversion needed (either no unit widget or no target SI defined)
+                    else:
+                        float_bounds_si = (float(val1), float(val2))
+
+                    # Final bounds check for Real variables
+                    if float_bounds_si[0] > float_bounds_si[1]:
+                         raise ValueError(f"Lower bound ({float_bounds_si[0]}) > Upper bound ({float_bounds_si[1]}) in SI units")
+                    
+                    parameters[base_name] = Real(bounds=float_bounds_si)
+
+            except AttributeError as e:
+                raise AttributeError(f"UI element not found for '{base_name}'. Check UI file/names. Error: {e}")
+            except ValueError as e: 
+                raise ValueError(f"Input or Unit error for '{base_name}': {e}")
+            except pint.UndefinedUnitError as e:
+                 raise pint.UndefinedUnitError(f"Unit error for '{base_name}': {e}")
+            except pint.DimensionalityError as e:
+                 raise pint.DimensionalityError(f"Unit conversion error for '{base_name}' from '{pint_unit_str}' to '{target_si_unit}': {e}")
             except Exception as e:
-                 raise ValueError(f"Error processing UI variable '{base_name}': {e}")
-
-        # Add material choices if they are optimization variables (using Choice)
-        # Example: parameters['Magnet_Material'] = Choice(options=["Recoma 18", "Recoma 20", ...])
-        # Currently, materials seem fixed based on dropdowns, handled in _get_other_opt_args
-        # If they *become* optimization variables, add them here using Choice.
-
+                raise ValueError(f"Unexpected error processing UI variable '{base_name}': {e}\n{traceback.format_exc()}")
         return parameters
 
     def _read_opt_config_from_ui(self):
