@@ -175,8 +175,6 @@ VOLUMN = R_MtrLength_m * pi * (R_LaminatR_m^2);          % Volume
 MVOL = R_MtrLength_m * pi * (R_MagnetOutR_m^2 - RM2^2);    % Magnet volume
 
 
-fprintf('Hello')
-
 %% Limit checks
 
 if R_LaminatR_m > (10*R_MtrLength_m) || R_LaminatR_m < (0.1*R_MtrLength_m)        % Lam OD 10 times to 1/10 stack length, (aspect ratio check)
