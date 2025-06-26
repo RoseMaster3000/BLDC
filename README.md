@@ -1,13 +1,15 @@
-# Setup
-I have created 2 simple .bat files you can run from command promt
-* 1_setup.bat (this sets up a virtual environment for the program to run)
-* 2_compile.bat (optional, compile the UI and assets)
-* 3_run.bat (runs the GUI program)
+# BLDC Optimizer
+A QT app for using gnenetic algorithms to optimize brushless DC motors
 
 ![Optimization menu](screenshots/1.png)
 ![Parameter menu](screenshots/2.png)
 ![Simulation menu](screenshots/3.png)
 
+# Setup
+I have created 2 simple .bat files you can run from command promt
+* `1_setup.bat` (this sets up a virtual environment for the program to run)
+* `2_compile.bat` (optional, compile the UI and assets)
+* `3_run.bat` (runs the GUI program)
 
 # Compile Interface
 The `gui/interface.py` is created from compiling the UI xml file `assets/BLDC.ui`. (This .ui can be editted using Qt designer)
