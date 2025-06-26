@@ -1,0 +1,2866 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<ui version="4.0">
+ <class>UserInterface</class>
+ <widget class="QMainWindow" name="UserInterface">
+  <property name="geometry">
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>1017</width>
+    <height>1018</height>
+   </rect>
+  </property>
+  <property name="sizePolicy">
+   <sizepolicy hsizetype="Preferred" vsizetype="Preferred">
+    <horstretch>0</horstretch>
+    <verstretch>0</verstretch>
+   </sizepolicy>
+  </property>
+  <property name="windowTitle">
+   <string>200015SSW - Genetic Algorithm Motor Optimizer Tool (GAMOT) </string>
+  </property>
+  <widget class="QWidget" name="centralwidget">
+   <layout class="QGridLayout" name="centralwidget_gridLayout_1">
+    <property name="spacing">
+     <number>0</number>
+    </property>
+    <item row="0" column="0">
+     <widget class="QTabWidget" name="tabWidget">
+      <property name="font">
+       <font>
+        <pointsize>10</pointsize>
+       </font>
+      </property>
+      <property name="currentIndex">
+       <number>1</number>
+      </property>
+      <property name="documentMode">
+       <bool>true</bool>
+      </property>
+      <widget class="QWidget" name="tab_1">
+       <attribute name="title">
+        <string>Motor Parameters</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_tab_1_scrollWrapper">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_tab_1">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_tab_1">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>950</width>
+             <height>918</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="tab_1_gridLayout_2">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item row="4" column="0">
+             <widget class="QGroupBox" name="groupBox_18">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>MATERIAL</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_18_gridLayout_9">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="Magnet_Material">
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="sizeAdjustPolicy">
+                  <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 18</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 20</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 22</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 25</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 24HE</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 26</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 26HE</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 28</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 28HE</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 30</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 30HE</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 30S</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 32</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 32S</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 33E</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Recoma 35E</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_40">
+                 <property name="text">
+                  <string>Magnet Material</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="Iron_Material">
+                 <item>
+                  <property name="text">
+                   <string>M19</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>430 Stainless Steel</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1215 Steel</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1018 Steel</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1008 Steel</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>1010 Steel</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Hiperco 50</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_42">
+                 <property name="text">
+                  <string>Lamination Material</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_41">
+                 <property name="text">
+                  <string>Iron Material</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="Lamination_Material">
+                 <item>
+                  <property name="text">
+                   <string>M19</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Hiperco 50</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox">
+              <property name="title">
+               <string>ROTOR</string>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+              <property name="checkable">
+               <bool>false</bool>
+              </property>
+              <property name="checked">
+               <bool>false</bool>
+              </property>
+              <layout class="QGridLayout" name="groupBox_gridLayout_5">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="5" column="3">
+                <widget class="QDoubleSpinBox" name="R_MagneticLossCoef1_2">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.001180000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_6">
+                 <property name="text">
+                  <string>Magnetic Loss Coefficient, a2</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QDoubleSpinBox" name="R_MagnetOutR_2">
+                 <property name="decimals">
+                  <number>4</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>5.100000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QDoubleSpinBox" name="R_MagnetRadialLength_2">
+                 <property name="decimals">
+                  <number>4</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1.600000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="2">
+                <widget class="QDoubleSpinBox" name="R_MagneticLossCoef3_1">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label">
+                 <property name="text">
+                  <string>Number of Pole Pairs</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QComboBox" name="R_MagnetOutR_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="4" column="3">
+                <widget class="QDoubleSpinBox" name="R_MagnetBackIronInnerR_2">
+                 <property name="decimals">
+                  <number>4</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_4">
+                 <property name="text">
+                  <string>Magnet Assembly Backiron Inner Radius                    </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_5">
+                 <property name="text">
+                  <string>Magnetic Loss Coefficient, a1</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_3">
+                 <property name="text">
+                  <string>Magnet Outer Radius</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_2">
+                 <property name="text">
+                  <string>Radial Length of Magnet</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QSpinBox" name="I_PolePair_1">
+                 <property name="value">
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QDoubleSpinBox" name="R_MagnetOutR_1">
+                 <property name="decimals">
+                  <number>4</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>5.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="label_7">
+                 <property name="text">
+                  <string>Magnetic Loss Coefficient, a3</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="3">
+                <widget class="QDoubleSpinBox" name="R_MagneticLossCoef2_2">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1.880000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QDoubleSpinBox" name="R_MagnetRadialLength_1">
+                 <property name="decimals">
+                  <number>4</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QSpinBox" name="I_PolePair_2">
+                 <property name="maximum">
+                  <number>999</number>
+                 </property>
+                 <property name="value">
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="R_MagnetRadialLength_unit">
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="editable">
+                  <bool>true</bool>
+                 </property>
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <widget class="QDoubleSpinBox" name="R_MagneticLossCoef2_1">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1.880000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="3">
+                <widget class="QDoubleSpinBox" name="R_MagneticLossCoef3_2">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="QDoubleSpinBox" name="R_MagneticLossCoef1_1">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.001180000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QComboBox" name="R_MagnetBackIronInnerR_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QDoubleSpinBox" name="R_MagnetBackIronInnerR_1">
+                 <property name="decimals">
+                  <number>4</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QLabel" name="label_16">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Box</enum>
+                 </property>
+                 <property name="text">
+                  <string>Minimum Value</string>
+                 </property>
+                 <property name="textFormat">
+                  <enum>Qt::RichText</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QLabel" name="label_18">
+                 <property name="font">
+                  <font>
+                   <pointsize>10</pointsize>
+                   <weight>75</weight>
+                   <bold>true</bold>
+                  </font>
+                 </property>
+                 <property name="layoutDirection">
+                  <enum>Qt::LeftToRight</enum>
+                 </property>
+                 <property name="frameShape">
+                  <enum>QFrame::Box</enum>
+                 </property>
+                 <property name="frameShadow">
+                  <enum>QFrame::Plain</enum>
+                 </property>
+                 <property name="text">
+                  <string>Maximum Value</string>
+                 </property>
+                 <property name="textFormat">
+                  <enum>Qt::RichText</enum>
+                 </property>
+                 <property name="alignment">
+                  <set>Qt::AlignCenter</set>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="2" column="0">
+             <widget class="QGroupBox" name="groupBox_4">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>MECHANICAL</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_4_gridLayout_7">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_31">
+                 <property name="text">
+                  <string>Motor Length</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="R_MtrLength_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QDoubleSpinBox" name="R_MtrLength_1">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>20.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QDoubleSpinBox" name="R_MtrLength_2">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>21.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_32">
+                 <property name="text">
+                  <string>Load Inertia Reflected to Motor                                </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="R_LoadInertia_unit">
+                 <item>
+                  <property name="text">
+                   <string>ozm-in^2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>ozf-in-s^2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>lbm-in^2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>lbm-ft^2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>kg-m^2</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>N-m-s^2</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QDoubleSpinBox" name="R_LoadInertia_1">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QDoubleSpinBox" name="R_LoadInertia_2">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_33">
+                 <property name="text">
+                  <string>Gear Ratio</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QDoubleSpinBox" name="R_GearRatio_2">
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>15.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QDoubleSpinBox" name="R_GearRatio_1">
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>15.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="groupBox_2">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="focusPolicy">
+               <enum>Qt::NoFocus</enum>
+              </property>
+              <property name="title">
+               <string>STATOR</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_2_gridLayout_6">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="2">
+                <widget class="QSpinBox" name="I_NumElecPhase_1">
+                 <property name="value">
+                  <number>3</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_8">
+                 <property name="text">
+                  <string>Number of Electrical Phase</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="3">
+                <widget class="QDoubleSpinBox" name="R_PhaseCurrentAmp_2">
+                 <property name="maximum">
+                  <double>100000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>9000.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QDoubleSpinBox" name="R_PhaseCurrentAmp_1">
+                 <property name="maximum">
+                  <double>100000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>9000.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QSpinBox" name="I_NumElecPhase_2">
+                 <property name="value">
+                  <number>3</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_9">
+                 <property name="text">
+                  <string>Phase Current Amplitude at Max. Torque</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_13">
+                 <property name="text">
+                  <string>Lamination Tooth Tip and Wedge Thickness               </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="3">
+                <widget class="QDoubleSpinBox" name="R_FillFactor_2">
+                 <property name="maximum">
+                  <double>1.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.590000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_10">
+                 <property name="text">
+                  <string>Wire Copper Radius</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_11">
+                 <property name="text">
+                  <string>Wire Insulation Thickness</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QLabel" name="label_12">
+                 <property name="text">
+                  <string>Fill Factor</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QDoubleSpinBox" name="R_WireCopperR_1">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="R_WireCopperR_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QLabel" name="label_15">
+                 <property name="text">
+                  <string>Lamination Slot Liner Thickness</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QLabel" name="label_14">
+                 <property name="text">
+                  <string>Lamination Outer Radius</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="R_PhaseCurrentAmp_unit">
+                 <item>
+                  <property name="text">
+                   <string>Apk</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arms</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <widget class="QDoubleSpinBox" name="R_InsulThick_2">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QDoubleSpinBox" name="R_InsulThick_1">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="2">
+                <widget class="QDoubleSpinBox" name="R_FillFactor_1">
+                 <property name="maximum">
+                  <double>1.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.590000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QComboBox" name="R_InsulThick_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QDoubleSpinBox" name="R_WireCopperR_2">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="1">
+                <widget class="QComboBox" name="R_LaminatR_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="6" column="1">
+                <widget class="QComboBox" name="R_LaminatToothWedgeThickness_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <widget class="QDoubleSpinBox" name="R_LaminatToothWedgeThickness_1">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.276000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="2">
+                <widget class="QDoubleSpinBox" name="R_LaminatR_1">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>10.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="3">
+                <widget class="QDoubleSpinBox" name="R_LaminatR_2">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>10.100000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="3">
+                <widget class="QDoubleSpinBox" name="R_LamSlotLinerThick_2">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.010000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="3">
+                <widget class="QDoubleSpinBox" name="R_LaminatToothWedgeThickness_2">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.276000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="2">
+                <widget class="QDoubleSpinBox" name="R_LamSlotLinerThick_1">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.010000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="1">
+                <widget class="QComboBox" name="R_LamSlotLinerThick_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="3" column="0">
+             <widget class="QGroupBox" name="groupBox_17">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>AIRGAP</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_17_gridLayout_8">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="1" column="3">
+                <widget class="QDoubleSpinBox" name="R_FluidSpecificGrav_2">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.001000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="R_FluidKinVisc_unit">
+                 <item>
+                  <property name="text">
+                   <string>cSt</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m^2/s</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_35">
+                 <property name="text">
+                  <string>Airgap Fluid Specific Gravity</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QDoubleSpinBox" name="R_AirgapRadialLength_1">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.025000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QDoubleSpinBox" name="R_FluidSpecificGrav_1">
+                 <property name="decimals">
+                  <number>5</number>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.001000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_37">
+                 <property name="text">
+                  <string>Airgap Length</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="3">
+                <widget class="QDoubleSpinBox" name="R_AirgapRadialLength_2">
+                 <property name="decimals">
+                  <number>6</number>
+                 </property>
+                 <property name="maximum">
+                  <double>10000.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.000100000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.025000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QDoubleSpinBox" name="R_FluidKinVisc_1">
+                 <property name="maximum">
+                  <double>1000000.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>15.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="R_AirgapRadialLength_unit">
+                 <item>
+                  <property name="text">
+                   <string>in</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>mm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_36">
+                 <property name="text">
+                  <string>Airgap Fluid Viscosity                                                </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="3">
+                <widget class="QDoubleSpinBox" name="R_FluidKinVisc_2">
+                 <property name="maximum">
+                  <double>1000000.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>15.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_2">
+       <attribute name="title">
+        <string>Optimization</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_tab_2_scrollWrapper">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_tab_2">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_tab_2">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>971</width>
+             <height>680</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="tab_2_gridLayout_3">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item row="2" column="0">
+             <widget class="QGroupBox" name="groupBox_21">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>TO BE OPTIMIZED (select at least one)</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_21_gridLayout_12">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="TorqueOpt">
+                 <property name="enabled">
+                  <bool>true</bool>
+                 </property>
+                 <property name="text">
+                  <string>Maximize Gearbox Output Torque</string>
+                 </property>
+                 <property name="checkable">
+                  <bool>true</bool>
+                 </property>
+                 <property name="checked">
+                  <bool>false</bool>
+                 </property>
+                 <property name="tristate">
+                  <bool>false</bool>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="Efficinecy_minOpt">
+                 <property name="text">
+                  <string>Maximize Motor Efficiency (Min. Among Operating Points)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="Efficinecy_maxOpt">
+                 <property name="text">
+                  <string>Maximize Motor Efficiency (Max. Among Operating Points)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QCheckBox" name="WeightOpt">
+                 <property name="text">
+                  <string>Minimize Motor Weight</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QCheckBox" name="MagWeightOpt">
+                 <property name="text">
+                  <string>Minimize Magnet Material Volume</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QCheckBox" name="VoltageOpt">
+                 <property name="text">
+                  <string>Minimize Phase Voltage</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QCheckBox" name="MtrLengthOpt">
+                 <property name="text">
+                  <string>Minimize Motor Length</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QCheckBox" name="MtrRadiusOpt">
+                 <property name="text">
+                  <string>Minimize Motor Radius</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="1" column="0">
+             <widget class="QGroupBox" name="groupBox_20">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>PERFORMANCE REQUIREMENT</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_20_gridLayout_11">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="2" column="0">
+                <widget class="QLabel" name="label_52">
+                 <property name="text">
+                  <string>Minimum Acceptable Motor Efficiency</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QComboBox" name="VDC_unit">
+                 <item>
+                  <property name="text">
+                   <string>VDC</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_54">
+                 <property name="text">
+                  <string>Maximum Acceptable Motor Weight</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QLineEdit" name="MinTor">
+                 <property name="text">
+                  <string>51079.0, 4000.0, 11782.0, 25261.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_51">
+                 <property name="text">
+                  <string>Gearbox Output Min. Torque Points (Comma-Separated)    </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="2">
+                <widget class="QDoubleSpinBox" name="MaxWeight">
+                 <property name="maximum">
+                  <double>20000.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1000.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QDoubleSpinBox" name="VDC">
+                 <property name="maximum">
+                  <double>2000.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>1000.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2" colspan="2">
+                <widget class="QLineEdit" name="SpeedReq">
+                 <property name="focusPolicy">
+                  <enum>Qt::StrongFocus</enum>
+                 </property>
+                 <property name="inputMask">
+                  <string/>
+                 </property>
+                 <property name="text">
+                  <string>30.0, 562.0, 706.0, 417.0</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="1">
+                <widget class="QComboBox" name="SpeedReq_unit">
+                 <item>
+                  <property name="text">
+                   <string>rpm</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>rad/s</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Hz</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="1">
+                <widget class="QComboBox" name="MinEff_unit">
+                 <item>
+                  <property name="text">
+                   <string>Fraction</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_50">
+                 <property name="text">
+                  <string>Gearbox Output Speed Points (Comma-Separated)</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_55">
+                 <property name="text">
+                  <string>Minimum Available Bus Voltage</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="1">
+                <widget class="QComboBox" name="MinTor_unit">
+                 <item>
+                  <property name="text">
+                   <string>N-m</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>in-lb</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>ft-lb</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="2" column="2">
+                <widget class="QDoubleSpinBox" name="MinEff_">
+                 <property name="singleStep">
+                  <double>0.050000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.500000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="1">
+                <widget class="QComboBox" name="MaxWeigh_unit">
+                 <item>
+                  <property name="text">
+                   <string>kg</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>lbm</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox_19">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>OPTIMIZATION CONFIGURATION</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_19_gridLayout_10">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="4" column="0">
+                <widget class="QLabel" name="label_48">
+                 <property name="text">
+                  <string>Distribution of Mutation     </string>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QLabel" name="label_45">
+                 <property name="text">
+                  <string>Number of Generations</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QLabel" name="label_46">
+                 <property name="text">
+                  <string>Number of Processors</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="2">
+                <widget class="QSpinBox" name="npop">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="value">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="1" column="2">
+                <widget class="QSpinBox" name="ngens">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <number>10000</number>
+                 </property>
+                 <property name="value">
+                  <number>10</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="0" column="0">
+                <widget class="QLabel" name="label_44">
+                 <property name="text">
+                  <string>Population Size</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="1">
+                <widget class="QPushButton" name="eta_help">
+                 <property name="text">
+                  <string>Help</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="3">
+                <spacer name="horizontalSpacer">
+                 <property name="orientation">
+                  <enum>Qt::Horizontal</enum>
+                 </property>
+                 <property name="sizeType">
+                  <enum>QSizePolicy::Expanding</enum>
+                 </property>
+                 <property name="sizeHint" stdset="0">
+                  <size>
+                   <width>40</width>
+                   <height>20</height>
+                  </size>
+                 </property>
+                </spacer>
+               </item>
+               <item row="3" column="2">
+                <widget class="QDoubleSpinBox" name="ProbMut">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <double>1.000000000000000</double>
+                 </property>
+                 <property name="singleStep">
+                  <double>0.010000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>0.100000000000000</double>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QLabel" name="label_49">
+                 <property name="text">
+                  <string>Probability of Mutation</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="6" column="2">
+                <widget class="QSpinBox" name="nprocesses">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <number>20</number>
+                 </property>
+                 <property name="value">
+                  <number>2</number>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="2">
+                <widget class="QDoubleSpinBox" name="DisMut">
+                 <property name="sizePolicy">
+                  <sizepolicy hsizetype="Preferred" vsizetype="Fixed">
+                   <horstretch>0</horstretch>
+                   <verstretch>0</verstretch>
+                  </sizepolicy>
+                 </property>
+                 <property name="maximum">
+                  <double>100.000000000000000</double>
+                 </property>
+                 <property name="value">
+                  <double>5.000000000000000</double>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_3">
+       <attribute name="title">
+        <string>Execution</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_tab_3_scrollWrapper">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_tab_3">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_tab_3">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>971</width>
+             <height>680</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="tab_3_gridLayout_4">
+            <property name="spacing">
+             <number>0</number>
+            </property>
+            <item row="1" column="0">
+             <widget class="QPushButton" name="Execution">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="palette">
+               <palette>
+                <active>
+                 <colorrole role="Button">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="Base">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="Window">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                </active>
+                <inactive>
+                 <colorrole role="Button">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="Base">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="Window">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                </inactive>
+                <disabled>
+                 <colorrole role="Button">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="Base">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                 <colorrole role="Window">
+                  <brush brushstyle="SolidPattern">
+                   <color alpha="255">
+                    <red>85</red>
+                    <green>255</green>
+                    <blue>127</blue>
+                   </color>
+                  </brush>
+                 </colorrole>
+                </disabled>
+               </palette>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(85, 255, 127);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Execute Optimization</string>
+              </property>
+              <property name="autoDefault">
+               <bool>false</bool>
+              </property>
+              <property name="flat">
+               <bool>false</bool>
+              </property>
+             </widget>
+            </item>
+            <item row="1" column="1">
+             <widget class="QPushButton" name="stopButton">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="styleSheet">
+               <string notr="true">background-color: rgb(255, 123, 132);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+              </property>
+              <property name="text">
+               <string>Stop Optimization</string>
+              </property>
+             </widget>
+            </item>
+            <item row="4" column="0" colspan="2">
+             <widget class="QTableWidget" name="tableWidget">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+             </widget>
+            </item>
+            <item row="0" column="0" colspan="2">
+             <widget class="QProgressBar" name="progressBar">
+              <property name="sizePolicy">
+               <sizepolicy hsizetype="Expanding" vsizetype="Minimum">
+                <horstretch>0</horstretch>
+                <verstretch>0</verstretch>
+               </sizepolicy>
+              </property>
+              <property name="toolTip">
+               <string/>
+              </property>
+              <property name="layoutDirection">
+               <enum>Qt::LeftToRight</enum>
+              </property>
+              <property name="value">
+               <number>0</number>
+              </property>
+              <property name="alignment">
+               <set>Qt::AlignCenter</set>
+              </property>
+              <property name="invertedAppearance">
+               <bool>false</bool>
+              </property>
+              <property name="textDirection">
+               <enum>QProgressBar::TopToBottom</enum>
+              </property>
+              <property name="format">
+               <string>%p% Progress</string>
+              </property>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tab_4">
+       <attribute name="title">
+        <string>Results</string>
+       </attribute>
+       <layout class="QVBoxLayout" name="verticalLayout_tab_4_scrollWrapper">
+        <item>
+         <widget class="QScrollArea" name="scrollArea_tab_4">
+          <property name="widgetResizable">
+           <bool>true</bool>
+          </property>
+          <widget class="QWidget" name="scrollAreaWidgetContents_tab_4">
+           <property name="geometry">
+            <rect>
+             <x>0</x>
+             <y>0</y>
+             <width>971</width>
+             <height>680</height>
+            </rect>
+           </property>
+           <layout class="QGridLayout" name="gridLayout_8">
+            <item row="0" column="0">
+             <widget class="QGroupBox" name="groupBox_22">
+              <property name="font">
+               <font>
+                <pointsize>10</pointsize>
+               </font>
+              </property>
+              <property name="title">
+               <string>SELECT SIGNALS FOR PLOTTING</string>
+              </property>
+              <layout class="QGridLayout" name="groupBox_22_gridLayout_13">
+               <property name="spacing">
+                <number>0</number>
+               </property>
+               <item row="0" column="0">
+                <widget class="QCheckBox" name="MinTrqMargin_Percent">
+                 <property name="text">
+                  <string>Minimum Torque Margin</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="9" column="0">
+                <widget class="QCheckBox" name="MaxTotalLoss_W">
+                 <property name="text">
+                  <string>Maximum Motor Loss</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="13" column="0">
+                <widget class="QPushButton" name="ParallelPlot">
+                 <property name="styleSheet">
+                  <string notr="true">background-color: rgb(170, 255, 255);
+font: 75 12pt &quot;MS Shell Dlg 2&quot;;</string>
+                 </property>
+                 <property name="text">
+                  <string>Parallel Plot</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="7" column="0">
+                <widget class="QCheckBox" name="R_MtrLength_m">
+                 <property name="text">
+                  <string>Motor Length</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="12" column="0">
+                <widget class="QComboBox" name="dropdown3">
+                 <item>
+                  <property name="text">
+                   <string># of pole pairs</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Radial length of magnet</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Wire copper radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fill factor</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination tooth tip and wedge thickness</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot liner thickness</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Gear ratio</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet backiron inner radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet backiron outer radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tooth width</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination tooth tip radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet inner radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Backiron thickness, lamination</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Backiron thickness, magnet assembly</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot outer</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Winding Slot area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arc length of lamination ID</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arc length of one tooth pitch</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Approx width of slot opening</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string># of turns</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Actual flux density</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Actual coil flux</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Rated Torque per phase</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Torque constant</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>BackEMF constant</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Phase inductance</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Phase resistance</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Inertia</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>torque/inertia</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Motor volume</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Stator surface area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fe weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Cu weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Rotor weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Current density</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean resistive losses</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean back iron losses</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean fluid losses</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="1" column="0">
+                <widget class="QCheckBox" name="MeanTrqMargin_Percent">
+                 <property name="text">
+                  <string>Average Torque Margin</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="8" column="0">
+                <widget class="QCheckBox" name="R_LaminatR_m">
+                 <property name="text">
+                  <string>Motor Radius</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="3" column="0">
+                <widget class="QCheckBox" name="MeanEffMtr_Percent">
+                 <property name="text">
+                  <string>Average Efficiency</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="10" column="0">
+                <widget class="QComboBox" name="dropdown1">
+                 <item>
+                  <property name="text">
+                   <string># of pole pairs</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Radial length of magnet</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Wire copper radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fill factor</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination tooth tip and wedge thickness</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot liner thickness</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Gear ratio</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet backiron inner radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet backiron outer radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tooth width</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination tooth tip radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet inner radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Backiron thickness, lamination</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Backiron thickness, magnet assembly</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot outer</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Winding Slot area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arc length of lamination ID</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arc length of one tooth pitch</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Approx width of slot opening</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string># of turns</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Actual flux density</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Actual coil flux</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Rated Torque per phase</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Torque constant</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>BackEMF constant</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Phase inductance</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Phase resistance</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Inertia</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>torque/inertia</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Motor volume</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Stator surface area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fe weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Cu weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Rotor weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Current density</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean resistive losses</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean back iron losses</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean fluid losses</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="6" column="0">
+                <widget class="QCheckBox" name="MagVol_m3">
+                 <property name="text">
+                  <string>Magnet Volume</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="4" column="0">
+                <widget class="QCheckBox" name="Weight_kg">
+                 <property name="text">
+                  <string>Motor Weight</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="2" column="0">
+                <widget class="QCheckBox" name="MinEffMtr_Percent">
+                 <property name="text">
+                  <string>Minimum Efficiency</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="5" column="0">
+                <widget class="QCheckBox" name="VDC_2">
+                 <property name="text">
+                  <string>Phase Voltage</string>
+                 </property>
+                </widget>
+               </item>
+               <item row="11" column="0">
+                <widget class="QComboBox" name="dropdown2">
+                 <item>
+                  <property name="text">
+                   <string># of pole pairs</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Radial length of magnet</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Wire copper radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fill factor</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination tooth tip and wedge thickness</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot liner thickness</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Gear ratio</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet backiron inner radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet backiron outer radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Tooth width</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination tooth tip radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Magnet inner radius</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Backiron thickness, lamination</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Backiron thickness, magnet assembly</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot outer</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Lamination slot area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Winding Slot area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arc length of lamination ID</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Arc length of one tooth pitch</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Approx width of slot opening</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string># of turns</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Actual flux density</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Actual coil flux</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Rated Torque per phase</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Torque constant</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>BackEMF constant</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Phase inductance</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Phase resistance</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Inertia</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>torque/inertia</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Motor volume</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Stator surface area</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Fe weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Cu weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Rotor weight</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Current density</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean resistive losses</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean back iron losses</string>
+                  </property>
+                 </item>
+                 <item>
+                  <property name="text">
+                   <string>Mean fluid losses</string>
+                  </property>
+                 </item>
+                </widget>
+               </item>
+               <item row="13" column="1">
+                <widget class="QPushButton" name="ThreeDPlot">
+                 <property name="styleSheet">
+                  <string notr="true">font: 75 12pt &quot;MS Shell Dlg 2&quot;;
+background-color: rgb(170, 255, 255);</string>
+                 </property>
+                 <property name="text">
+                  <string>3D Plot</string>
+                 </property>
+                </widget>
+               </item>
+              </layout>
+             </widget>
+            </item>
+           </layout>
+          </widget>
+         </widget>
+        </item>
+       </layout>
+      </widget>
+     </widget>
+    </item>
+    <item row="1" column="0">
+     <widget class="QLabel" name="label_17">
+      <property name="maximumSize">
+       <size>
+        <width>972</width>
+        <height>16777215</height>
+       </size>
+      </property>
+      <property name="text">
+       <string/>
+      </property>
+      <property name="pixmap">
+       <pixmap resource="resources.qrc">:/ParkerLogo_80p.jpg</pixmap>
+      </property>
+      <property name="scaledContents">
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+  <widget class="QMenuBar" name="menubar">
+   <property name="geometry">
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>1017</width>
+     <height>26</height>
+    </rect>
+   </property>
+   <widget class="QMenu" name="menuFile">
+    <property name="title">
+     <string>File</string>
+    </property>
+    <addaction name="actionLoad"/>
+    <addaction name="actionSave"/>
+   </widget>
+   <widget class="QMenu" name="menuScale">
+    <property name="title">
+     <string>Scale</string>
+    </property>
+    <addaction name="font12"/>
+    <addaction name="font14"/>
+    <addaction name="font16"/>
+    <addaction name="font18"/>
+    <addaction name="font20"/>
+    <addaction name="font22"/>
+   </widget>
+   <addaction name="menuFile"/>
+   <addaction name="menuScale"/>
+  </widget>
+  <widget class="QStatusBar" name="statusbar"/>
+  <action name="actionLoad">
+   <property name="text">
+    <string>Load</string>
+   </property>
+  </action>
+  <action name="actionSave">
+   <property name="text">
+    <string>Save</string>
+   </property>
+  </action>
+  <action name="action12">
+   <property name="text">
+    <string>12</string>
+   </property>
+  </action>
+  <action name="action14">
+   <property name="text">
+    <string>14</string>
+   </property>
+  </action>
+  <action name="action16">
+   <property name="text">
+    <string>16</string>
+   </property>
+  </action>
+  <action name="action18">
+   <property name="text">
+    <string>18</string>
+   </property>
+  </action>
+  <action name="action20">
+   <property name="text">
+    <string>20</string>
+   </property>
+  </action>
+  <action name="action22">
+   <property name="text">
+    <string>22</string>
+   </property>
+  </action>
+  <action name="action10">
+   <property name="text">
+    <string>10</string>
+   </property>
+  </action>
+  <action name="font12">
+   <property name="text">
+    <string>12</string>
+   </property>
+  </action>
+  <action name="font14">
+   <property name="text">
+    <string>14</string>
+   </property>
+  </action>
+  <action name="font16">
+   <property name="text">
+    <string>16</string>
+   </property>
+  </action>
+  <action name="font18">
+   <property name="text">
+    <string>18</string>
+   </property>
+  </action>
+  <action name="font20">
+   <property name="text">
+    <string>20</string>
+   </property>
+  </action>
+  <action name="font22">
+   <property name="text">
+    <string>22</string>
+   </property>
+  </action>
+ </widget>
+ <resources>
+  <include location="resources.qrc"/>
+ </resources>
+ <connections/>
+</ui>
