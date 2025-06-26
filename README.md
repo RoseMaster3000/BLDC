@@ -1,12 +1,12 @@
 # BLDC Optimizer
-A QT app for using gnenetic algorithms to optimize brushless DC motors
+A QT app for using genetic algorithms to optimize brushless DC motors
 
 ![Optimization menu](screenshots/1.png)
 ![Parameter menu](screenshots/2.png)
 ![Simulation menu](screenshots/3.png)
 
 # Setup
-I have created 2 simple .bat files you can run from command promt
+I have created 2 simple .bat files you can run from command prompt:
 * `1_setup.bat` (this sets up a virtual environment for the program to run)
 * `2_compile.bat` (optional, compile the UI and assets)
 * `3_run.bat` (runs the GUI program)
