@@ -32,21 +32,22 @@ import numpy as np
 
 
 # Setup the optimizer 
-# No accepts optional "callback_instance" (for progress bar)
+# Now accepts optional "callback_instance" (for progress bar)
 def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, eng, Real, Integer, Choice, Binary, OptimizationConf, callback_instance=None):
     MinEff_ = OptimizationConf.get("MinEff_")
     MaxWeight_kg = OptimizationConf.get("MaxWeight")
     VDC = OptimizationConf.get("VDC")
     MinTor_Nm_str = OptimizationConf.get("MinTor")
     SpeedReq_rpm_str = OptimizationConf.get("SpeedReq")
-    
+    # print('SpeedReq_rpm_str')
+    # print(SpeedReq_rpm_str)
     Tor_numbers = MinTor_Nm_str.split(',')
     MinTor_Nm = [float(num) for num in Tor_numbers]
     Speed_numbers = SpeedReq_rpm_str.split(',')
     SpeedReq_rpm = [float(num) for num in Speed_numbers]    
     
-    MinTor_Nm = np.array(MinTor_Nm)
-    SpeedReq_rpm = np.array(SpeedReq_rpm)
+    #MinTor_Nm = np.array(MinTor_Nm)
+    #SpeedReq_rpm = np.array(SpeedReq_rpm)
     
     NumPts = len(SpeedReq_rpm)
     
@@ -55,9 +56,9 @@ def MotorOpt(MotorCalcs, params, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminatio
     NumObj_ = 0           # number of objectives
     if OptimizationConf.get("TorqueOpt") == True: 
         NumObj_ = NumObj_+NumPts
-    if OptimizationConf.get("EfficinecyOpt_min") == True: 
+    if OptimizationConf.get("Efficinecy_minOpt") == True:
         NumObj_ = NumObj_+1
-    if OptimizationConf.get("EfficinecyOpt_max") == True: 
+    if OptimizationConf.get("Efficinecy_maxOpt") == True: 
         NumObj_ = NumObj_+1
     if OptimizationConf.get("WeightOpt") == True: 
         NumObj_ = NumObj_+1

@@ -19,20 +19,28 @@ def MotorCalcs_Vectorized(vars, consts, MinEffReq_, MinTor_Nm, MaxWeight_kg, VDC
     assert isinstance(consts, dict)
     NumTurnThreshold = 0.03 # force the number of turns to be an integer +/-0.03
     PostProcess = False 
+    # print(1)
     # print(list(vars.keys()))
+    # print(2)
     # print(list(vars.values()))
+    # print(3)
     # print(list(consts.keys()))
+    # print(4)
     # print(list(consts.values()))
-    # # print(consts.get("EfficinecyOpt_min"))
-    # # if consts.get("EfficinecyOpt_min") == True:
+    # # print(consts.get("EfficiencyOpt_min"))
+    # # if consts.get("EfficiencyOpt_min") == True:
     # #     print('tru')
     # print(MagnetBr_T)
     # print(MaxBMagnetIron_T)
     # print(PresentBLaminationBackIron_T)
+    # print('SpeedReq_rpm')
     # print(SpeedReq_rpm)
+    # print(type(SpeedReq_rpm))
+    # print('MinTor_Nm')
+    # print(MinTor_Nm)
     # print(type(MinTor_Nm))
     # print(vars.get("R_GearRatio_"))
-    Mtr_res = eng.UI_MotorCalcs_MATLAB_Vectorized(list(vars.keys()),list(vars.values()),list(consts.keys()),list(consts.values()), MinTor_Nm, MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, SpeedReq_rpm, PostProcess,NumObj_,  nargout=1)
+    Mtr_res = eng.UI_MotorCalcs_MATLAB_Vectorized(list(vars.keys()),list(vars.values()),list(consts.keys()),list(consts.values()), (MinTor_Nm), MagnetBr_T, MaxBMagnetIron_T, PresentBLaminationBackIron_T, (SpeedReq_rpm), PostProcess,NumObj_,  nargout=1)
     
     # print(Mtr_res[0])
     F = []
@@ -46,11 +54,11 @@ def MotorCalcs_Vectorized(vars, consts, MinEffReq_, MinTor_Nm, MaxWeight_kg, VDC
         for i in range(NumPts):
             F.append(Mtr_res[0][i])
             
-    if consts.get("EfficinecyOpt_min") == True: 
+    if consts.get("Efficinecy_minOpt") == True: 
         min_index = EfficienciesPerf.index(MinEffPerf_)
         F.append(Mtr_res[0][NumPts+min_index])
         
-    if consts.get("EfficinecyOpt_max") == True: 
+    if consts.get("Efficinecy_maxOpt") == True: 
         max_index = EfficienciesPerf.index(MaxEffPerf_)
         F.append(Mtr_res[0][NumPts+max_index])
         
