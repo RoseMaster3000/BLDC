@@ -1,0 +1,1 @@
+"virt/Scripts/activate.bat" & pyside2-rcc assets/resources.qrc -o gui/resources_rc.py & pyside2-uic --from-imports assets/BLDC_ResFixed.ui -o gui/interface.py

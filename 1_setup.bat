@@ -1,0 +1,1 @@
+python3.9 -m venv virt & "virt/Scripts/activate.bat" & pip install -r requirements.txt
